@@ -1,11 +1,33 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 import NavBar from "./navbar";
+import Home from "./home";
+import About from "./about";
+import PageNotFound from "./PageNotFound";
 
 function App() {
+  const [isLightThemed, setIsLightThemed] = useState<boolean>(true);
+
+  const handleThemeToggle: () => void = () => {
+    setIsLightThemed(!isLightThemed);
+  };
   return (
-    <div>
-      <NavBar />
-    </div>
+    <Router>
+      <div>
+        <NavBar
+          handleThemeToggle={handleThemeToggle}
+          isLightThemed={isLightThemed}
+        />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home isLightThemed={isLightThemed} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
