@@ -1,14 +1,28 @@
+import TestContent from "./testContent";
+
 interface HomeProps {
   isLightThemed: boolean;
 }
 
 const Home: React.FunctionComponent<HomeProps> = (props) => {
   const isLightThemed = props.isLightThemed;
-  const bgColor = isLightThemed ? "bg-white" : "bg-gray-800";
-  const textColor = isLightThemed ? "text-black" : "text-gray-400";
+
+  const sample = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+
   return (
-    <div className={`${bgColor} h-screen`}>
-      <h1 className={`text-2xl ${textColor}`}>Home Page</h1>
+    <div>
+      <TestContent paragraph={sample} isLightThemed={isLightThemed} />
     </div>
   );
 };
