@@ -12,7 +12,8 @@ function App() {
   const handleThemeToggle: () => void = () => {
     setIsLightThemed(!isLightThemed);
   };
-  const bgColor = isLightThemed ? "bg-white-200" : "bg-gray-700";
+  let bgColor = "transition-colors duration-500 ";
+  bgColor = isLightThemed ? "bg-white-200" : "bg-gray-700";
   return (
     <Router>
       <div className={`${bgColor} h-screen`}>

@@ -16,19 +16,20 @@ const NavBar: React.FunctionComponent<NavBarProps> = (props) => {
   const getButtonClass = (index: number) => {
     if (isLightThemed) {
       if (selectedBar === index) {
-        return "text-green-700 border-b-4 border-green-700";
+        return "text-green-700 border-b-4 border-green-700 transition-colors duration-500";
       } else {
         return "text-gray-500 hover:text-green-700 transition duration-300";
       }
     } else {
       if (selectedBar === index) {
-        return "text-yellow-500 border-b-4 border-yellow-500";
+        return "text-yellow-500 border-b-4 border-yellow-500 transition-colors duration-500";
       } else {
         return "text-gray-500 hover:text-yellow-500 transition duration-300";
       }
     }
   };
-  const navTheme = isLightThemed ? "bg-white shadow-md" : "bg-gray-800";
+  let navTheme = isLightThemed ? "bg-white shadow-md" : "bg-gray-700";
+  navTheme += " transition-colors duration-500";
   const logoColor = isLightThemed ? "text-green-700" : "text-yellow-500";
   return (
     <nav className={navTheme}>

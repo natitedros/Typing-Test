@@ -35,13 +35,20 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     "crave",
   ];
 
-  const { data, isPending, error } = useFetch<DefinitionModel>(
-    "https://api.api-ninjas.com/v1/dictionary?word=" + words[0]
-  );
+  // const { data, isPending, error } = useFetch<DefinitionModel>(
+  //   "https://api.api-ninjas.com/v1/dictionary?word=" + words[0]
+  // );
 
   return (
-    <div>
-      <TestContent paragraph={sample} isLightThemed={isLightThemed} />
+    <div className="flex items-center justify-center">
+      {/* {data && ( */}
+      <TestContent
+        // paragraph={data.definition}
+        paragraph={sample}
+        isLightThemed={isLightThemed}
+      />
+      {/* )} */}
+      {/* {isPending && <p className="text-4xl">...</p>} */}
     </div>
   );
 };
