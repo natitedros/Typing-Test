@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface TestContentProps {
   paragraph: string;
@@ -11,9 +11,26 @@ const TestContent: React.FunctionComponent<TestContentProps> = (props) => {
   const isLight = props.isLightThemed;
   const [currIndex, setCurrIndex] = useState(0);
   const [wordCount, setWordCount] = useState(0);
-  const [timer, setTimer] = useState(10);
-  let textColor = isLight ? "text-gray-600" : "text-gray-400";
-  textColor += " transition-colors duration-500";
+  const [timer, setTimer] = useState(60);
+  const inputRef = useRef<HTMLInputElement>(null);
+  let textUntypedColor = isLight ? "text-gray-500" : "text-gray-500";
+  textUntypedColor += " transition-colors duration-500";
+  let textTypedColor = isLight ? "text-black" : "text-white";
+  textTypedColor += " transition-colors duration-500";
+
+  useEffect(() => {
+    const handleClick = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   const timerFunction = () => {
     const intervalTimer = setInterval(() => {
@@ -38,22 +55,17 @@ const TestContent: React.FunctionComponent<TestContentProps> = (props) => {
       if (currIndex === 1) {
         timerFunction();
       }
-      console.log("yesss");
-    } else {
-      console.log("char: " + char);
-      console.log("current Letter: " + content[currIndex]);
-      console.log(currIndex);
-      console.log(content.slice(currIndex, currIndex + 10));
-      console.log("noooo");
     }
   };
 
   const renderTextWithColoredLetter = () => {
     return content.split("").map((letter, index) => {
+      const textColor = index < currIndex ? textTypedColor : textUntypedColor;
+      const currLetter = "text-yellow-500";
       return (
         <span
           key={index}
-          className={index === currIndex ? "text-yellow-500" : textColor}
+          className={index === currIndex ? currLetter : textColor}
         >
           {letter}
         </span>
@@ -63,9 +75,21 @@ const TestContent: React.FunctionComponent<TestContentProps> = (props) => {
   const timerClass = currIndex > 0 ? "visible" : "invisible";
   return (
     <div className="mx-20 px-20 mt-20 flex flex-col items-center">
-      <h1 className={timerClass}>{timer}</h1>
-      <input value="" onChange={(e) => trackTest(e.target.value)} />
-      <article className={`${textColor} text-2xl`}>
+      {timer > 0 && (
+        <h1 className={`${timerClass} text-4xl font-mono text-yellow-600`}>
+          {timer}
+        </h1>
+      )}
+      {timer === 0 && (
+        <h1 className="text-4xl font-mono text-yellow-600">{wordCount} WPM</h1>
+      )}
+      <input
+        value=""
+        onChange={(e) => trackTest(e.target.value)}
+        ref={inputRef}
+        className="opacity-0"
+      />
+      <article className={`text-2xl text-center`}>
         {renderTextWithColoredLetter()}
       </article>
     </div>

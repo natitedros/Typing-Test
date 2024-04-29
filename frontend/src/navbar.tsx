@@ -36,16 +36,18 @@ const NavBar: React.FunctionComponent<NavBarProps> = (props) => {
       <div className="max-w-6xl px-4 mx-auto">
         <div className="flex justify-between">
           <div className="items-center">
-            <button className="flex items-center py-4 px-2">
-              <img
-                src="./images/app_logo.png"
-                alt="Logo"
-                className="h-10 w-10 mr-2"
-              />
-              <span className={`font-bold text-xl ${logoColor}`}>
-                Typing Test
-              </span>
-            </button>
+            <Link to={"/"}>
+              <button className="flex items-center py-4 px-2">
+                <img
+                  src="./images/app_logo.png"
+                  alt="Logo"
+                  className="h-10 w-10 mr-2"
+                />
+                <span className={`font-bold text-xl ${logoColor}`}>
+                  Typing Test
+                </span>
+              </button>
+            </Link>
           </div>
           <div className="flex items-center space-x-2">
             <Link to="/">
