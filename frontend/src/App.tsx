@@ -24,7 +24,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home isLightThemed={isLightThemed} />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About isLight={isLightThemed} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

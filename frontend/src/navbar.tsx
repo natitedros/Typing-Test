@@ -37,7 +37,10 @@ const NavBar: React.FunctionComponent<NavBarProps> = (props) => {
         <div className="flex justify-between">
           <div className="items-center">
             <Link to={"/"}>
-              <button className="flex items-center py-4 px-2">
+              <button
+                className="flex items-center py-4 px-2"
+                onClick={() => handleButtonClick(0)}
+              >
                 <img
                   src="./images/app_logo.png"
                   alt="Logo"
