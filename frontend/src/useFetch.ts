@@ -31,7 +31,7 @@ const useFetch = <T>(url: string) => {
         }
       });
     return () => abortCont.abort();
-  }, [url, apiKey]);
+  }, []);
   return { data, isPending, error };
 };
 export default useFetch;

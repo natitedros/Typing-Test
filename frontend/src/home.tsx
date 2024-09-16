@@ -22,22 +22,36 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     "abstruse",
     "bane",
     "crave",
+    "allusion",
+    "approbation",
+    "cardinal",
+    "inconsiderate",
+    "circumlocution",
+    "commensurate",
+    "desultory",
+    "preserve",
+    "demeanor",
+    "eulogize",
+    "euphemism",
+    "forestall",
+    "gregarious",
+    "harbinger",
   ];
-
-  // const { data, isPending, error } = useFetch<DefinitionModel>(
-  //   "https://api.api-ninjas.com/v1/dictionary?word=" + words[0]
-  // );
+  const randInd = Math.floor(Math.random() * words.length);
+  const { data, isPending, error } = useFetch<DefinitionModel>(
+    "https://api.api-ninjas.com/v1/dictionary?word=" + words[randInd]
+  );
 
   return (
     <div className="flex items-center justify-center">
-      {/* {data && ( */}
-      <TestContent
-        // paragraph={data.definition}
-        paragraph={sample}
-        isLightThemed={isLightThemed}
-      />
-      {/* )} */}
-      {/* {isPending && <p className="text-4xl">...</p>} */}
+      {data && (
+        <TestContent
+          paragraph={"Definition of the mystery word is - " + data.definition}
+          // paragraph={sample}
+          isLightThemed={isLightThemed}
+        />
+      )}
+      {isPending && <p className="text-4xl">...</p>}
     </div>
   );
 };
