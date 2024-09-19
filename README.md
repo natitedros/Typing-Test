@@ -1,3 +1,2 @@
 # Typing-Test
-
-https://main--typingtest-natnaeldesta.netlify.app/
+Try it out? [Click Here](https://typingtest-natnaeldesta.netlify.app/)
