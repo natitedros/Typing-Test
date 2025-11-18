@@ -48,15 +48,10 @@ An interactive typing speed test that not only measures your **WPM (Words Per Mi
 ## 📸 Screenshots
 
 ### 🖥️ Main Typing UI  
-![Typing UI](images/typing-ui.png)
+![Typing UI](images/typing-test-light.png)
 
 ### 🔦 Dark Mode Preview  
-![Dark Mode](images/dark-mode.png)
+![Dark Mode](images/typing-test-dark.png)
 
-> Replace `images/...` with your actual file paths.
 
 ---
-
-## 🧩 Project Structure
-
-Try it out? [Click Here](https://typingtest-natnaeldesta.netlify.app/)
